@@ -1,0 +1,33 @@
+{
+  "name": "judgement-upon-celestials",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && cp dist/index.html dist/404.html",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-router/node": "^8",
+    "@react-router/serve": "^8",
+    "isbot": "^5.1.36",
+    "lucide-react": "^1.31.0",
+    "plugin": "^0.3.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.2.7",
+    "react-router": "^8",
+    "react-router-dom": "^7.18.2"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^8",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^22",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.3"
+  }
+}
