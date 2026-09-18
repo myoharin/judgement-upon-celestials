@@ -70,8 +70,8 @@ export default function Luna() {
     lastMousePos.current = { x: e.clientX, y: e.clientY };
   };
 
-  const endingClicks = 0
-  const endingClicksToRedirect = 12;
+  const [endingClicks, setEndingClicks] = useState(0);
+  const endingClicksToRedirect = 6;
   // Handles speed acceleration until MAX_SPEED, then advances text story
   const handleButtonClick = () => {
     if (isMaxed) {
@@ -79,10 +79,13 @@ export default function Luna() {
         setDialogueIndex((prev) => prev + 1);
       }
       else {
-        endingClicks++;
-        if (endingClicks >= endingClicksToRedirect) {
-          window.location.href = "/moon";
-        }
+        setEndingClicks((prev) => {
+          const newEndingClicks = prev + 1;
+          if (newEndingClicks >= endingClicksToRedirect) {
+            window.location.href = "/judgement-upon-celestials/moon";
+          }
+          return newEndingClicks;
+        });
       }
       return;
     }
