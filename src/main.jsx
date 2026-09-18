@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Root from './general-pages/root'
 import Encrypt from './general-pages/encrypt'
+import Jupitar from './celestial-pages/jupitar'
 
-import './index.css'
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Root />} />
         <Route path="/encrypt" element={<Encrypt />} />
+        <Route path="/jupitar" element={<Jupitar />} />
         <Route path="/*" element={<Navigate to="/" replace />}/>
       </Routes>
     </BrowserRouter>
