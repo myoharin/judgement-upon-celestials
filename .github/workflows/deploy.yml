@@ -35,6 +35,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Create .env file
+        env:
+          ENV_CONTENT: ${{ secrets.ENV }}
+        run: echo "$ENV_CONTENT" > .env
+
       - name: Build project
         run: npm run build
 
