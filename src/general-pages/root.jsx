@@ -116,7 +116,7 @@ export default function Root() {
         <div className="corner bottom right"></div>
           {/* Main Chromatic Title */}
           <div className="title-wrapper">
-            <h1 className="rgb-split-title" style={{ textAlign: 'center', fontFamily: 'monospace' }}>
+            <h1 className="rgb-split-title" style={{ textAlign: 'center', padding: '1rem' }}>
               Judgment upon <br /> Celestials
             </h1>
           </div>
