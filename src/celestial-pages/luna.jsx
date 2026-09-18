@@ -194,7 +194,7 @@ export default function Luna() {
         <div className="card-corner-letter bottom-right">☾</div>
 
         <h1 style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
-          A figure of love, or is it a figure of lust?
+          A figure of love, or is it a figure of something less?
         </h1>
         <h1 style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
           I too hold a name, too generic,

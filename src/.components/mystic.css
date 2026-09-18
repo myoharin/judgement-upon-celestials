@@ -334,7 +334,7 @@
 .mystic-card.theme-neptune {
   --mystic-bg: hsl(220, 50%, 7%);
   --mystic-bg-gradient: hsl(210, 55%, 13%);
-  --mystic-border: hsl(175, 70%, 60%);
+  --mystic-border: hsl(175, 30%, 69%);
   --mystic-text: hsl(190, 80%, 88%);
   --mystic-button-hover: hsl(215, 45%, 17%);
 }

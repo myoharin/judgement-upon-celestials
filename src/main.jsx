@@ -5,8 +5,9 @@ import Root from './general-pages/root'
 import Encrypt from './general-pages/encrypt'
 import Jupitar from './celestial-pages/jupitar'
 import Luna from './celestial-pages/luna'
+import Neptune from './celestial-pages/neptune'
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=1280, initial-scale=1.0" />
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/encrypt" element={<Encrypt />} />
         <Route path="/luna" element={<Luna />} />
         <Route path="/jupitar" element={<Jupitar />} />
+        <Route path="/neptune" element={<Neptune />} />
         <Route path="/*" element={<Navigate to="/" replace />}/>
       </Routes>
     </BrowserRouter>
