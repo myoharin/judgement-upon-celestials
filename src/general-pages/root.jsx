@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../index.css';
+import '../.components/celestial.css';
 import { decrypt } from '../.components/encrypt';
 
 const env = import.meta.env;
@@ -108,69 +109,75 @@ export default function Root() {
   return (
     <div className="celestial-canvas">
       <div className="celestial-container">
-        {/* Main Chromatic Title */}
-        <div className="title-wrapper">
-          <h1 className="rgb-split-title" style={{ textAlign: 'center' }}>
-            Judgment upon <br /> Celestials
-          </h1>
-        </div>
+        <div className="mystic-card theme-root">
+        <div className="corner top left"></div>
+        <div className="corner top right"></div>
+        <div className="corner bottom left"></div>
+        <div className="corner bottom right"></div>
+          {/* Main Chromatic Title */}
+          <div className="title-wrapper">
+            <h1 className="rgb-split-title" style={{ textAlign: 'center', fontFamily: 'monospace' }}>
+              Judgment upon <br /> Celestials
+            </h1>
+          </div>
 
-        {/* 10 Submission Boxes */}
-        <div className="celestial-grid">
-          {CELESTIALS_CONFIG.map((celestial) => {
-            const val = answers[celestial.id];
-            const letterCount = countLetters(val);
-            const showCounter = letterCount > WARNING_THRESHOLD;
-            const isAtLimit = letterCount === celestial.maxLetters;
+          {/* 10 Submission Boxes */}
+          <div className="celestial-grid">
+            {CELESTIALS_CONFIG.map((celestial) => {
+              const val = answers[celestial.id];
+              const letterCount = countLetters(val);
+              const showCounter = letterCount > WARNING_THRESHOLD;
+              const isAtLimit = letterCount === celestial.maxLetters;
 
-            return (
-              <div key={celestial.id} className="celestial-box">
-                {/* Celestial Label */}
-                <label
-                  className={`celestial-label ${celestial.isBlurred ? 'blurred glitch' : ''}`}
-                  data-underscores={'_'.repeat(celestial.displayName.length)}
-                >
-                  {celestial.isBlurred
-                    ? caesarCipher(celestial.displayName, currentShift + celestial.displayName.length * 9)
-                    : celestial.displayName}
-                </label>
+              return (
+                <div key={celestial.id} className="celestial-box">
+                  {/* Celestial Label */}
+                  <label
+                    className={`celestial-label ${celestial.isBlurred ? 'blurred glitch' : ''}`}
+                    data-underscores={'_'.repeat(celestial.displayName.length)}
+                  >
+                    {celestial.isBlurred
+                      ? caesarCipher(celestial.displayName, currentShift + celestial.displayName.length * 9)
+                      : celestial.displayName}
+                  </label>
 
-                {/* Input & Counter */}
-                <div className="input-wrapper">
-                  <textarea
-                    rows={1}
-                    className="celestial-input"
-                    value={val}
-                    onChange={(e) =>
-                      handleChange(celestial.id, e.target.value, celestial.maxLetters)
-                    }
-                    onInput={handleAutoResize}
-                    onKeyDown={handleKeyDown}
-                    placeholder={celestial.isBlurred ? celestial.isBlurred : `Cast your judgement on ${celestial.displayName}...`}
-                  />
-                  {showCounter && (
-                    <span className={`letter-counter ${isAtLimit ? 'at-limit' : ''}`}>
-                      {letterCount}/{celestial.maxLetters}
-                    </span>
-                  )}
+                  {/* Input & Counter */}
+                  <div className="input-wrapper">
+                    <textarea
+                      rows={1}
+                      className="celestial-input"
+                      value={val}
+                      onChange={(e) =>
+                        handleChange(celestial.id, e.target.value, celestial.maxLetters)
+                      }
+                      onInput={handleAutoResize}
+                      onKeyDown={handleKeyDown}
+                      placeholder={celestial.isBlurred ? celestial.isBlurred : `Cast your judgement on ${celestial.displayName}...`}
+                    />
+                    {showCounter && (
+                      <span className={`letter-counter ${isAtLimit ? 'at-limit' : ''}`}>
+                        {letterCount}/{celestial.maxLetters}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        {/* Combined Concatenated Output Box */}
-        <div className="combined-box-section">
-          <label className="celestial-label combined-label">Combined Judgment</label>
-          <textarea
-            ref={combinedRef}
-            readOnly
-            rows={1}
-            value={decryptedAnswer}
-            placeholder="May the stars align..."
-            className="combined-textarea"
-          />
-        </div>
+          {/* Combined Concatenated Output Box */}
+          <div className="combined-box-section">
+            <label className="celestial-label combined-label">Will your judgment match the stars?</label>
+            <textarea
+              ref={combinedRef}
+              readOnly
+              rows={1}
+              value={decryptedAnswer}
+              placeholder="May the stars align..."
+              className="combined-textarea"
+            />
+          </div>
+      </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ Todo:
 - [ ] venus
 - [ ] earth
 - [ ] mars
-- [ ] jupitar
+- [x] jupitar
 - [ ] saturn
 - [ ] uranus
 - [ ] neptune
@@ -32,6 +32,6 @@ ideas
 
 If you want to encrypt the rewards, the long key must be full lowercase no space only letters combination of all the sins in order. You can use `/judgement-upon-celestials/encrypt` page to assist this.
 
-crossword combined:
+crossword long key:
 `ATEMPERANCECAGHSLOTHRAHACURIOSITYWRATHHIIATTSYULUSTDOIENVYTGEYLUDTHUMILITYPATIENCELROIIGNORANCEGREEDYEENCE`
 

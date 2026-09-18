@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import '../.components/crossword.css';
+import '../.components/mystic.css'; 
+import '../.components/celestial.css';
 import { decrypt } from '../.components/encrypt';
 import jupitarCrossword from '../../assets/jupitar_crossword.png';
+
 
 const env = import.meta.env;
 
@@ -221,93 +224,105 @@ export default function Jupitar() {
   };
 
   return (
+    
     <div className="celestial-canvas black-bg">
-      <div className="crossword-container">
-        <div className="crossword-scroll-wrapper" ref={wrapperRef}>
-          {/* Scaled Bounds Box keeps flow space accurate */}
-          <div
-            className="crossword-scale-container"
-            style={{
-              width: `${stageWidth * scale}px`,
-              height: `${stageHeight * scale}px`,
-            }}
-          >
-            {/* Unified Stage */}
+      <div className="mystic-card theme-jupiter">
+        <div className="card-letter">Jupiter</div>
+        <div className="corner top left"></div>
+        <div className="corner top right"></div>
+        <div className="corner bottom left"></div>
+        <div className="corner bottom right"></div>
+
+        <div className="card-corner-letter top-left">R</div>
+        <div className="card-corner-letter bottom-right">R</div>
+
+        <div className="crossword-container">
+          <div className="crossword-scroll-wrapper" ref={wrapperRef}>
+            {/* Scaled Bounds Box keeps flow space accurate */}
             <div
-              className="crossword-stage"
+              className="crossword-scale-container"
               style={{
-                width: `${stageWidth}px`,
-                height: `${stageHeight}px`,
-                transform: `scale(${scale})`,
-                transformOrigin: 'top left',
+                width: `${stageWidth * scale}px`,
+                height: `${stageHeight * scale}px`,
               }}
             >
-              <img
-                src={IMAGE_CONFIG.url}
-                alt="Crossword Blueprint"
-                className="crossword-bg-image"
-                style={{
-                  transform: `translate(${IMAGE_CONFIG.offsetX}px, ${IMAGE_CONFIG.offsetY}px) scale(${IMAGE_CONFIG.scale})`,
-                  opacity: IMAGE_CONFIG.opacity,
-                }}
-              />
-
+              {/* Unified Stage */}
               <div
-                className="crossword-grid"
+                className="crossword-stage"
                 style={{
-                  gridTemplateRows: `repeat(${GRID_ROWS}, ${CELL_HEIGHT_PX}px)`,
-                  gridTemplateColumns: `repeat(${GRID_COLS}, ${CELL_WIDTH_PX}px)`,
+                  width: `${stageWidth}px`,
+                  height: `${stageHeight}px`,
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'top left',
                 }}
               >
-                {Array.from({ length: GRID_ROWS }).map((_, r) =>
-                  Array.from({ length: GRID_COLS }).map((_, c) => {
-                    const key = `${r}-${c}`;
-                    const cellData = GRID_MAP[key];
+                <img
+                  src={IMAGE_CONFIG.url}
+                  alt="Crossword Blueprint"
+                  className="crossword-bg-image"
+                  style={{
+                    transform: `translate(${IMAGE_CONFIG.offsetX}px, ${IMAGE_CONFIG.offsetY}px) scale(${IMAGE_CONFIG.scale})`,
+                    opacity: IMAGE_CONFIG.opacity,
+                  }}
+                />
 
-                    if (!cellData) {
-                      return <div key={key} className="crossword-cell empty" />;
-                    }
+                <div
+                  className="crossword-grid"
+                  style={{
+                    gridTemplateRows: `repeat(${GRID_ROWS}, ${CELL_HEIGHT_PX}px)`,
+                    gridTemplateColumns: `repeat(${GRID_COLS}, ${CELL_WIDTH_PX}px)`,
+                  }}
+                >
+                  {Array.from({ length: GRID_ROWS }).map((_, r) =>
+                    Array.from({ length: GRID_COLS }).map((_, c) => {
+                      const key = `${r}-${c}`;
+                      const cellData = GRID_MAP[key];
 
-                    const locked = isCellLocked(key);
+                      if (!cellData) {
+                        return <div key={key} className="crossword-cell empty" />;
+                      }
 
-                    // Fetch all word objects overlapping this specific cell
-                    const cellWords = cellData.words.map((id) => WORDS_CONFIG.find((w) => w.id === id));
+                      const locked = isCellLocked(key);
 
-                    // Priority rule: 'sin' if connected to any sinful word, otherwise 'virtue'
-                    const isConnectedToSin = cellWords.some((w) => w && w.isVirtuous === false);
-                    const themeClass = isConnectedToSin ? 'sin' : 'virtue';
+                      // Fetch all word objects overlapping this specific cell
+                      const cellWords = cellData.words.map((id) => WORDS_CONFIG.find((w) => w.id === id));
 
-                    return (
-                      <input
-                        key={key}
-                        ref={(el) => (inputRefs.current[key] = el)}
-                        type="text"
-                        value={gridValues[key] || ''}
-                        readOnly={locked}
-                        onChange={(e) => handleCellChange(r, c, e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(r, c, e)}
-                        onFocus={(e) => e.target.select()}
-                        className={`crossword-cell active ${locked ? `locked ${themeClass}` : ''}`}
-                      />
-                    );
-                  })
-                )}
+                      // Priority rule: 'sin' if connected to any sinful word, otherwise 'virtue'
+                      const isConnectedToSin = cellWords.some((w) => w && w.isVirtuous === false);
+                      const themeClass = isConnectedToSin ? 'sin' : 'virtue';
+
+                      return (
+                        <input
+                          key={key}
+                          ref={(el) => (inputRefs.current[key] = el)}
+                          type="text"
+                          value={gridValues[key] || ''}
+                          readOnly={locked}
+                          onChange={(e) => handleCellChange(r, c, e.target.value)}
+                          onKeyDown={(e) => handleKeyDown(r, c, e)}
+                          onFocus={(e) => e.target.select()}
+                          className={`crossword-cell active ${locked ? `locked ${themeClass}` : ''}`}
+                        />
+                      );
+                    })
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Real-Time Decrypted Output Box */}
-        <div className="combined-box-section">
-          <label className="celestial-label combined-label">Decrypted Judgment</label>
-          <textarea
-            ref={combinedRef}
-            readOnly
-            rows={1}
-            value={decryptedResult || combinedSubmission}
-            placeholder="Complete the puzzle to align the payload..."
-            className="combined-textarea"
-          />
+          {/* Real-Time Decrypted Output Box */}
+          <div className="combined-box-section theme-jupiter">
+            <label className="celestial-label combined-label sun">Jupiter's Sin.  </label>
+            <textarea
+              ref={combinedRef}
+              readOnly
+              rows={1}
+              value={decryptedResult || combinedSubmission}
+              placeholder="In the face of the King of Gods, sinlings sears."
+              className="combined-textarea"
+            />
+          </div>
         </div>
       </div>
     </div>

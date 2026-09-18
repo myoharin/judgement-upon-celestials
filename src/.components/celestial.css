@@ -1,0 +1,312 @@
+/* Background Canvas */
+.celestial-canvas {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(69, 246, 255, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 10% 60%, rgba(134, 52, 93, 0.35) 0%, transparent 45%),
+    linear-gradient(135deg, #38bdf8 0%, #7773b6 45%, #4c1d95 80%, rgb(146, 82, 155) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 40px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.celestial-canvas.black-bg {
+  background: #000000 !important;
+}
+
+/* Main Container */
+.celestial-container {
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Typography Effects */
+.rgb-split-title {
+  font-size: 2.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.05;
+  text-shadow: 
+    -2px -1px 0 #e7acda,
+     2px  1px 0 #8fd3f8;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Grid Layout for Inputs */
+.celestial-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Horizontal Row Layout */
+.celestial-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Fixed Label Width */
+.celestial-label {
+  width: 110px;
+  min-width: 110px;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0, 243, 255, 0.4);
+  user-select: none;
+}
+
+/* Blurred Label Variant */
+.celestial-label.blurred {
+  filter: blur(5px);
+  opacity: 0.7;
+  transition: filter 0.3s;
+}
+
+.celestial-label.blurred:hover {
+  animation: none !important;
+  filter: blur(0px) !important;
+  opacity: 1 !important;
+  font-size: 0 !important;
+}
+
+.celestial-label.blurred:hover::after {
+  content: attr(data-underscores);
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Input Wrapper & Counter Position */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.celestial-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  padding: 10px 70px 10px 14px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: inherit;
+  backdrop-filter: blur(8px);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  field-sizing: content;
+  resize: none;
+  overflow: hidden;
+  word-break: break-word;
+  white-space: pre-wrap;
+  min-height: 42px;
+}
+
+.celestial-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.35);
+}
+
+/* Format Counter Badge xx/20 */
+.letter-counter {
+  position: absolute;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.letter-counter.at-limit {
+  color: var(--neon-pink);
+  font-weight: bold;
+  text-shadow: 0 0 6px var(--neon-pink);
+}
+
+/* Combined Output Box */
+.combined-box-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.combined-label {
+  width: 100%;
+  color: var(--neon-cyan);
+}
+
+.combined-textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 6px;
+  padding: 12px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  word-break: break-all;
+  outline: none;
+  field-sizing: content;
+  resize: none;
+  overflow: hidden;
+  min-height: 46px;
+  /* Shadow now matches active theme neon color */
+  box-shadow: 0 0 15px var(--neon-cyan); 
+}
+
+/* Glitch Keyframes & Trigger */
+.celestial-label.glitch {
+  display: inline-block;
+  animation: occasional-glitch 5s infinite ease-in-out;
+}
+
+@keyframes occasional-glitch {
+  0%, 88%, 100% {
+    transform: translate(0, 0) skew(0deg);
+    text-shadow: 0 0 6px rgba(0, 243, 255, 0.4);
+    filter: blur(5px);
+  }
+  89% {
+    transform: translate(-2px, 1px) skewX(-12deg);
+    text-shadow: -3px 0 var(--neon-pink), 3px 0 var(--neon-cyan);
+    filter: blur(2px);
+  }
+  91% {
+    transform: translate(2px, -1px) skewX(8deg);
+    text-shadow: 3px 0 var(--neon-pink), -3px 0 var(--neon-cyan);
+    filter: blur(6px);
+  }
+  93% {
+    transform: translate(-1px, 2px);
+    text-shadow: -2px 0 var(--neon-cyan), 2px 0 var(--neon-pink);
+    filter: blur(3px);
+  }
+  95% {
+    transform: translate(0, 0) skew(0deg);
+    text-shadow: 0 0 6px rgba(0, 243, 255, 0.4);
+    filter: blur(5px);
+  }
+}
+
+
+/* --- 10 CELESTIAL THEMES SYSTEM --- */
+
+/* 2. MOON (Luna) — Silver Mist & Deep Lunar Indigo */
+.theme-luna {
+  --neon-cyan: #e0e7ff;
+  --neon-pink: #818cf8;
+  --theme-bg-1: rgba(224, 231, 255, 0.3);
+  --theme-bg-2: rgba(99, 102, 241, 0.35);
+  --theme-base: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #000000 100%);
+}
+
+/* 3. MERCURY — Quicksilver & Fleet Violet */
+.theme-mercury {
+  --neon-cyan: #38bdf8;
+  --neon-pink: #c084fc;
+  --theme-bg-1: rgba(56, 189, 248, 0.3);
+  --theme-bg-2: rgba(192, 132, 252, 0.35);
+  --theme-base: linear-gradient(135deg, #33135c 0%, #1e293b 50%, #020617 100%);
+}
+
+/* 4. VENUS — Rose Quartz & Emerald Dawn */
+.theme-venus {
+  --neon-cyan: #f43f5e;
+  --neon-pink: #10b981;
+  --theme-bg-1: rgba(244, 63, 94, 0.35);
+  --theme-bg-2: rgba(16, 185, 129, 0.3);
+  --theme-base: linear-gradient(135deg, #4c0519 0%, #064e3b 50%, #000000 100%);
+}
+
+/* 5. MARS — Rusty Crimson & Fiery Amber */
+.theme-mars {
+  --neon-cyan: #ef4444;
+  --neon-pink: #f97316;
+  --theme-bg-1: rgba(239, 68, 68, 0.4);
+  --theme-bg-2: rgba(249, 115, 22, 0.35);
+  --theme-base: linear-gradient(135deg, #450a0a 0%, #2a0808 50%, #000000 100%);
+}
+
+/* 6. JUPITER — Regal Imperial Violet & Cosmic Amber */
+.theme-jupiter {
+  --neon-cyan: #a855f7;
+  --neon-pink: #f59e0b;
+  --theme-bg-1: rgba(168, 85, 247, 0.35);
+  --theme-bg-2: rgba(245, 158, 11, 0.35);
+  --theme-base: linear-gradient(135deg, #3b0764 0%, #451a03 50%, #000000 100%);
+}
+
+/* 7. SATURN — Obsidian Lead & Ochre Rings */
+.theme-saturn {
+  --neon-cyan: #fbbf24;
+  --neon-pink: #64748b;
+  --theme-bg-1: rgba(251, 191, 36, 0.25);
+  --theme-bg-2: rgba(100, 116, 139, 0.35);
+  --theme-base: linear-gradient(135deg, #292524 0%, #172554 50%, #000000 100%);
+}
+
+/* 8. URANUS — Electric Cyan & Frozen Teal */
+.theme-uranus {
+  --neon-cyan: #00f3ff;
+  --neon-pink: #2dd4bf;
+  --theme-bg-1: rgba(0, 243, 255, 0.35);
+  --theme-bg-2: rgba(45, 212, 191, 0.35);
+  --theme-base: linear-gradient(135deg, #083344 0%, #042f2e 50%, #000000 100%);
+}
+
+/* 9. NEPTUNE — Deep Oceanic Blue & Mystic Seafoam */
+.theme-neptune {
+  --neon-cyan: #3b82f6;
+  --neon-pink: #14b8a6;
+  --theme-bg-1: rgba(59, 130, 246, 0.4);
+  --theme-bg-2: rgba(20, 184, 166, 0.35);
+  --theme-base: linear-gradient(135deg, #172554 0%, #0284c7 45%, #030712 100%);
+}
+
+/* 10. PLUTO — Void Shadow & Spectral Magenta */
+.theme-pluto {
+  --neon-cyan: #ec4899;
+  --neon-pink: #a855f7;
+  --theme-bg-1: rgba(236, 72, 153, 0.25);
+  --theme-bg-2: rgba(168, 85, 247, 0.25);
+  --theme-base: linear-gradient(135deg, #18181b 0%, #3f0708 50%, #000000 100%);
+}
+
+/* --- THEME OVERRIDES FOR CANVAS --- */
+.celestial-canvas[class*="theme-"] {
+  background: 
+    radial-gradient(circle at 85% 15%, var(--theme-bg-1) 0%, transparent 45%),
+    radial-gradient(circle at 10% 60%, var(--theme-bg-2) 0%, transparent 45%),
+    var(--theme-base);
+}

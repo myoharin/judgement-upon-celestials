@@ -112,3 +112,20 @@
   text-shadow: 0 0 4px #ff0000;
   cursor: default;
 }
+
+.crossword_brackets {
+  border: var(--corner) solid;
+  border-image-source:
+    conic-gradient(
+      transparent 10%,
+      var(--bg)   10%,
+      var(--bg)   40%,
+      transparent 40%,
+      transparent 60%,
+      var(--bg)   60%,
+      var(--bg)   90%,
+      transparent 90%
+    );
+  /* browsers have different thresholds for this, Safari needs at least 0.1% */
+  border-image-slice: 0.1%;
+}
