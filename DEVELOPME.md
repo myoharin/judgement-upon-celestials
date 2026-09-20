@@ -15,9 +15,9 @@ Todo:
 - [x] mars
 - [x] jupitar
 - [ ] saturn
-- [ ] uranus
+- [x] uranus
 - [x] neptune
-- [ ] pluto
+- [x] pluto
 
 - [ ] leviathan
 - [ ] mammon
@@ -26,6 +26,9 @@ Todo:
 - [ ] satan
 - [ ] asmodeus
 - [ ] belphegor
+- [ ] lilith
+- [ ] god
+- [ ] adam
 
 ideas
 - [ ] answer box colour changes from purple(sins) to golden yellow(quotes)
