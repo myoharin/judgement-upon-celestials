@@ -45,3 +45,5 @@ Local storage stores how many times soneone visited a page. Use that for the pag
 
 mobile adapatble
 
+make sure all the copied quotes are encrypted correctly with the right ' instead of whatever google doc uses.
+

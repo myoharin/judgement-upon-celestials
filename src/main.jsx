@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Root from './general-pages/root'
 import Encrypt from './general-pages/encrypt'
 import Earth from './celestial-pages/earth'
+import Moon from './celestial-pages/moon'
 
 
 import Mercury from './celestial-pages/mercury'
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/encrypt" element={<Encrypt />} />
 
         <Route path="/earth" element={<Earth />} />
+        <Route path="/moon" element={<Moon />} />
 
         <Route path="/mercury" element={<Mercury />} />
         <Route path="/venus" element={<Venus />} />

@@ -193,7 +193,6 @@ export default function Luna() {
         <div className="card-corner-letter top-left">☾</div>
         <div className="card-corner-letter bottom-right">☾</div>
 
-        <br />
         <h1 style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
           A figure of love, or is it a figure of something less?
         </h1>
