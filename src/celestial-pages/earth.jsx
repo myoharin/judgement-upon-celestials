@@ -221,7 +221,6 @@ export default function Earth() {
 
 
 
-
 `;
 
 
@@ -237,7 +236,7 @@ export default function Earth() {
       }}
     >
 
-      <div className="mystic-card theme-mars" style={{ width: 'fit-content', minWidth: '40rem', margin: '5rem' }}>
+      <div className="mystic-card" style={{ width: 'fit-content', minWidth: '40rem', margin: '5rem' }}>
         <div className="card-letter" style={{ fontSize: '1.0rem', textAlign: 'center' }}>Reunited once, just to be seperated.</div>
         <div className="corner top left"></div>
         <div className="corner top right"></div>

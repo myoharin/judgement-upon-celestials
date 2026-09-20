@@ -5,7 +5,7 @@ Todo:
 - [ ] planet(s)
 - [ ] celestial(s)
 
-- [ ] moon
+- [x] moon
 - [x] earth
 
 - [x] luna(r)

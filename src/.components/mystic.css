@@ -314,6 +314,9 @@
   font-family: 'Courier New', monospace;
   font-size: 1rem;
   font-weight: bold;
+  width: fit-content;
+  align-self: anchor-center;
+  justify-content: center;
   letter-spacing: 4px;
   color: var(--mystic-text, #00f3ff);
   background: rgba(0, 243, 255, 0.1);
