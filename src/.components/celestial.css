@@ -304,6 +304,14 @@
   --theme-base: linear-gradient(135deg, #18181b 0%, #3f0708 50%, #000000 100%);
 }
 
+.theme-terra {
+  --neon-cyan: #aeffae;
+  --neon-pink: #bbffbc;
+  --theme-bg-1: rgba(236, 72, 153, 0.25);
+  --theme-bg-2: rgba(168, 85, 247, 0.25);
+  --theme-base: linear-gradient(135deg, #18181b 0%, #3f0708 50%, #000000 100%);
+}
+
 /* --- THEME OVERRIDES FOR CANVAS --- */
 .celestial-canvas[class*="theme-"] {
   background: 

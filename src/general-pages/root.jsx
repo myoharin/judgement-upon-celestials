@@ -7,6 +7,14 @@ const env = import.meta.env;
 
 const letters_to_convert_to_quote = 55;
 
+// Sample Sins & Virtues list (Replace or expand this array later)
+const SINS_AND_VIRTUES = [
+  // Deadly Sins
+  'pride', 'greed', 'lust', 'envy', 'gluttony', 'wrath', 'sloth', 'ignorance', 'love',
+  // Cardinal Virtues
+  'chastity', 'temperance', 'charity', 'diligence', 'patience', 'gratitude', 'humility', 'apathy','curiosity'
+];
+
 // Helper: Safely parses env vars to numbers with a default fallback of 20
 const parseMaxLetters = (val) => Number(val) || 20;
 
@@ -37,6 +45,28 @@ const CELESTIALS_CONFIG = [
 ];
 
 const WARNING_THRESHOLD = 12;
+
+// Embedded Keyframe Style for single pulse effect
+const PULSE_ANIMATION_STYLES = `
+  @keyframes pulseOnceAnimation {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(210, 100%, 78%, 0);
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px var(--mystic-border, hsl(210, 100%, 78%));
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(210, 100%, 78%, 0);
+    }
+  }
+
+  .pulse-once {
+    animation: pulseOnceAnimation 0.5s ease-in-out 1;
+  }
+`;
 
 export default function Root() {
   const [answers, setAnswers] = useState(
@@ -108,12 +138,16 @@ export default function Root() {
 
   return (
     <div className="celestial-canvas">
+      {/* Pulse Keyframe Injection */}
+      <style>{PULSE_ANIMATION_STYLES}</style>
+
       <div className="celestial-container">
         <div className="mystic-card theme-root">
-        <div className="corner top left"></div>
-        <div className="corner top right"></div>
-        <div className="corner bottom left"></div>
-        <div className="corner bottom right"></div>
+          <div className="corner top left"></div>
+          <div className="corner top right"></div>
+          <div className="corner bottom left"></div>
+          <div className="corner bottom right"></div>
+
           {/* Main Chromatic Title */}
           <div className="title-wrapper">
             <h1 className="rgb-split-title" style={{ textAlign: 'center', padding: '1rem' }}>
@@ -128,6 +162,9 @@ export default function Root() {
               const letterCount = countLetters(val);
               const showCounter = letterCount > WARNING_THRESHOLD;
               const isAtLimit = letterCount === celestial.maxLetters;
+
+              // Check if input matches any sin or virtue exactly (case-insensitive)
+              const isExactMatch = SINS_AND_VIRTUES.includes(val.trim().toLowerCase());
 
               return (
                 <div key={celestial.id} className="celestial-box">
@@ -145,14 +182,18 @@ export default function Root() {
                   <div className="input-wrapper">
                     <textarea
                       rows={1}
-                      className="celestial-input"
+                      className={`celestial-input ${isExactMatch ? 'pulse-once' : ''}`}
                       value={val}
                       onChange={(e) =>
                         handleChange(celestial.id, e.target.value, celestial.maxLetters)
                       }
                       onInput={handleAutoResize}
                       onKeyDown={handleKeyDown}
-                      placeholder={celestial.isBlurred ? celestial.isBlurred : `Cast your judgement on ${celestial.displayName}...`}
+                      placeholder={
+                        celestial.isBlurred
+                          ? celestial.isBlurred
+                          : `Cast your judgement on ${celestial.displayName}...`
+                      }
                     />
                     {showCounter && (
                       <span className={`letter-counter ${isAtLimit ? 'at-limit' : ''}`}>
@@ -177,7 +218,7 @@ export default function Root() {
               className="combined-textarea"
             />
           </div>
-      </div>
+        </div>
       </div>
     </div>
   );

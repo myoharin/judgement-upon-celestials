@@ -250,6 +250,79 @@
     }
 }
 
+/* ==========================================
+   Mystic Table & Morse Code Styling
+   ========================================== */
+
+.mystic-card h3 {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: var(--mystic-text, #e0e7ff);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 2rem 0 1rem 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--mystic-border, #00f3ff);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.mystic-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  background: var(--mystic-bg, rgba(11, 15, 25, 0.6));
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.mystic-card th {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--mystic-border, #00f3ff);
+  background: rgba(0, 243, 255, 0.08);
+  border-bottom: 2px solid var(--mystic-border, #00f3ff);
+}
+
+.mystic-card td {
+  padding: 0.6rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mystic-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.mystic-card tbody tr:hover {
+  background: rgba(0, 243, 255, 0.06);
+}
+
+.mystic-card tbody tr:hover td {
+  color: #ffffff;
+}
+
+/* Morse Code Highlighting */
+.mystic-card code {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: var(--mystic-text, #00f3ff);
+  background: rgba(0, 243, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--mystic-border, rgba(0, 243, 255, 0.25));
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+}
+
 .mystic-card.crimson {
     --mystic-bg: hsl(0, 30%, 8%);
     --mystic-border: hsl(0, 70%, 60%);
@@ -278,11 +351,11 @@
 
 /* 3. MERCURY — Quicksilver & Fleet Violet */
 .mystic-card.theme-mercury {
-  --mystic-bg: hsl(265, 30%, 8%);
-  --mystic-bg-gradient: hsl(260, 35%, 14%);
-  --mystic-border: hsl(190, 70%, 70%);
+  --mystic-bg: hsl(270, 5%, 7%);
+  --mystic-bg-gradient: hsl(262, 95%, 50%);
+  --mystic-border: hsl(189, 18%, 78%);
   --mystic-text: hsl(260, 60%, 88%);
-  --mystic-button-hover: hsl(265, 35%, 18%);
+  --mystic-button-hover: hsl(261, 89%, 4%);
 }
 
 /* 4. VENUS — Rose Gold & Velvet Crimson */
@@ -353,5 +426,13 @@
   --mystic-bg-gradient: hsl(225, 35%, 15%);
   --mystic-border: hsl(210, 100%, 78%);
   --mystic-text: hsl(210, 50%, 90%);
+  --mystic-button-hover: hsl(230, 30%, 18%);
+}
+
+.mystic-card.theme-terra {
+  --mystic-bg: hsl(138, 32%, 8%);
+  --mystic-bg-gradient: hsl(216, 33%, 29%);
+  --mystic-border: hsl(135, 96%, 51%);
+  --mystic-text: hsl(121, 100%, 91%);
   --mystic-button-hover: hsl(230, 30%, 18%);
 }

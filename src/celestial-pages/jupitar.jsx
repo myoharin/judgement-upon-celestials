@@ -42,6 +42,9 @@ const WORDS_CONFIG = [
   { id: '13D', answer: 'PRIDE', startRow: 21, startCol: 15, direction: 'down', isVirtuous: false },
   { id: '14A', answer: 'IGNORANCE', startRow: 23, startCol: 15, direction: 'across', isVirtuous: false },
   { id: '15D', answer: 'GLUTTONY', startRow: 17, startCol: 17, direction: 'down', isVirtuous: false },
+  { id: '16A', answer: 'SUBMISSION', startRow: 19, startCol: 16, direction: 'across', isVirtuous: true },
+  { id: '17A', answer: 'DOMINANCE', startRow: 26, startCol: 5, direction: 'across', isVirtuous: false },
+  
 ];
 
 const buildGridMap = () => {

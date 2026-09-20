@@ -183,7 +183,7 @@ export default function Luna() {
         width: '100vw',
       }}
     >
-      <div className="mystic-card theme-luna" style={{ width: 'fit-content', minWidth: '25rem' }}>
+      <div className="mystic-card theme-luna" style={{ width: 'fit-content', minWidth: '30rem' }}>
         <div className="card-letter">Luna</div>
         <div className="corner top left"></div>
         <div className="corner top right"></div>
@@ -193,6 +193,7 @@ export default function Luna() {
         <div className="card-corner-letter top-left">☾</div>
         <div className="card-corner-letter bottom-right">☾</div>
 
+        <br />
         <h1 style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
           A figure of love, or is it a figure of something less?
         </h1>
