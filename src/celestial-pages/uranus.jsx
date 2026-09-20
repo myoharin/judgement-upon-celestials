@@ -101,7 +101,7 @@ export default function Uranus() {
   return (
     <div
       style={{
-        background: 'hsl(272, 32%, 8%)',
+        background: 'hsl(249, 32%, 8%)',
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'center',

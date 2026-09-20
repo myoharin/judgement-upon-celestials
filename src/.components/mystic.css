@@ -399,11 +399,11 @@
 
 /* 8. URANUS — Electric Cyan & Frozen Teal */
 .mystic-card.theme-uranus {
-  --mystic-bg: hsl(185, 45%, 7%);
+  --mystic-bg: hsl(255, 44%, 7%);
   --mystic-bg-gradient: hsl(180, 50%, 12%);
-  --mystic-border: hsl(180, 85%, 65%);
-  --mystic-text: hsl(180, 90%, 88%);
-  --mystic-button-hover: hsl(185, 50%, 16%);
+  --mystic-border: hsl(234, 68%, 77%);
+  --mystic-text: hsl(249, 90%, 88%);
+  --mystic-button-hover: hsl(258, 51%, 16%);
 }
 
 /* 9. NEPTUNE — Deep Oceanic Blue & Aquamarine */
