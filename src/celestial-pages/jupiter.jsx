@@ -327,6 +327,8 @@ export default function Jupiter() {
             />
           </div>
         </div>
+
+        <p> Confused? Maybe you should consult the first man as cited in the genesis.</p>
       </div>
     </div>
   );
