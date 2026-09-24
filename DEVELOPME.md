@@ -1,9 +1,5 @@
 Todo:
-- [x] root/
-- [ ] virtue(s)
-- [ ] sin(s)
-- [ ] planet(s)
-- [ ] celestial(s)
+- [x] root
 
 - [x] moon
 - [x] earth
@@ -83,7 +79,7 @@ Some days, I couldn't tell sins from virtues. Our ex-husband now grovels at the 
 
 With time I realize, some sins make us human. That content you had when you tasted my first stew, then my second, then my thousandth; that gentle snore that warped my single moment into an eternity; that glee at our first harvest, your first trade; it's your fault my heart starves.
 
-Millennial past, just like the others, I too become a conduit for human sins. Who am I to decide what sins we can do without, and what sins we can keep? I am father's first of kin after all. I have a dear friend, they, too, are an antithesis to God's plan. They didn't know how to be free, and I didn't know how to settle. At my discretion, he imbued a fragment of me by your bed's side.
+Millennial past, just like the others, I've too become a conduit for human sins. Who am I to decide what sins we can do without, and what sins we can keep? I am father's first of kin after all. I have a dear friend, they, too, are an antithesis to God's plan. They didn't know how to be free, and I didn't know how to settle. At my discretion, he imbued a fragment of me by your bed's side.
 
 At the edge of father's sight, I found a refuge for us, far from bitter feelings, close to what makes us human. Although we're light years apart, I'll sing to your sea, afterall, you've always vowed to me our loves knows no distance. My work is far from done, but I will face all ages of the world alone, if it means another moment with you.
 
