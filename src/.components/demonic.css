@@ -1,0 +1,333 @@
+
+.demonic-card {
+  --theme-primary: #ff3c00;
+  --theme-glow: #ff0000;
+  --theme-dim: #880000;
+}
+
+/* ------------------------------------------
+   Entity Theme Color Overrides
+   ------------------------------------------ */
+.demonic-card.theme-pride {
+  --theme-primary: #ffd700;
+  --theme-glow: #f1e2e2;
+  --theme-dim: #880000;
+}
+
+.demonic-card.theme-greed {
+  --theme-primary: #00ff66;
+  --theme-glow: #bbcc00;
+  --theme-dim: #004f55;
+}
+
+.demonic-card.theme-lust {
+  --theme-primary: #ff007f;
+  --theme-glow: #ff00ab;
+  --theme-dim: #800040;
+}
+
+.demonic-card.theme-envy {
+  --theme-primary: #005eff;
+  --theme-glow: #005eff;
+  --theme-dim: #004466;
+}
+
+.demonic-card.theme-gluttony {
+  --theme-primary: #ff6600;
+  --theme-glow: #ff4400;
+  --theme-dim: #882200;
+}
+
+.demonic-card.theme-wrath {
+  --theme-primary: #ff8800;
+  --theme-glow: #f00a0a;
+  --theme-dim: #550000;
+}
+
+.demonic-card.theme-sloth {
+  --theme-primary: #a8a8a8;
+  --theme-glow: #d0d0d0;
+  --theme-dim: #404040;
+}
+
+.demonic-card.theme-lilith {
+  --theme-primary: #0026ff;
+  --theme-glow: #ba81e0;
+  --theme-dim: #564570;
+}
+
+.demonic-card.theme-god {
+  --theme-primary: #ffffff;
+  --theme-glow: #fff8dc;
+  --theme-dim: #777766;
+}
+
+.demonic-card.theme-adam {
+  --theme-primary: #ffaa55;
+  --theme-glow: #ff7733;
+  --theme-dim: #883300;
+}
+
+/* ==========================================
+   Infernal Realm & ASCII Flame Frame Styles
+   ========================================== */
+
+@keyframes hellfireFlicker {
+  0%, 100% {
+    box-shadow: 0 0 25px color-mix(in srgb, var(--theme-primary) 40%, transparent), 
+                inset 0 0 15px color-mix(in srgb, var(--theme-glow) 30%, transparent);
+    border-color: var(--theme-primary);
+  }
+  25% {
+    box-shadow: 0 0 40px color-mix(in srgb, var(--theme-glow) 70%, transparent), 
+                inset 0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+    border-color: var(--theme-glow);
+  }
+  50% {
+    box-shadow: 0 0 18px color-mix(in srgb, var(--theme-glow) 30%, transparent),
+                inset 0 0 10px color-mix(in srgb, var(--theme-dim) 20%, transparent);
+    border-color: var(--theme-dim);
+  }
+  75% {
+    box-shadow: 0 0 35px color-mix(in srgb, var(--theme-primary) 60%, transparent),
+                inset 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+    border-color: var(--theme-primary);
+  }
+}
+
+@keyframes asciiFlameFlicker {
+  0%, 100% {
+    opacity: 0.9;
+    color: var(--theme-primary);
+    text-shadow: 0 0 6px var(--theme-glow), 0 0 12px var(--theme-primary);
+    transform: scale(1);
+  }
+  33% {
+    opacity: 1;
+    color: var(--theme-glow);
+    text-shadow: 0 0 10px var(--theme-primary), 0 0 20px var(--theme-glow);
+    transform: scale(1.02) translateY(-1px);
+  }
+  66% {
+    opacity: 0.75;
+    color: var(--theme-dim);
+    text-shadow: 0 0 4px var(--theme-dim);
+    transform: scale(0.98);
+  }
+}
+
+@keyframes textSulfurGlow {
+  0%, 100% {
+    text-shadow: 0 0 8px var(--theme-primary), 0 0 20px var(--theme-glow), 0 0 30px var(--theme-dim);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--theme-glow), 0 0 30px var(--theme-primary), 0 0 45px var(--theme-glow);
+  }
+}
+
+/* Fullscreen Infernal Canvas */
+.demonic-canvas {
+  width: 100vw;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--theme-dim) 35%, #000) 0%, color-mix(in srgb, var(--theme-dim) 12%, #000) 70%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Wild Fiery Card Frame */
+.demonic-card {
+  position: relative;
+  background: color-mix(in srgb, var(--theme-dim) 12%, #000 88%);
+  border: 0px solid var(--theme-primary);
+  border-radius: 1000px;
+  padding: 3.5rem 2.5rem;
+  max-width: 52rem;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 30%, transparent);
+  animation: hellfireFlicker 3s infinite ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ASCII Flame Corners */
+.demonic-card .ascii-corner {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 0.2rem;
+  line-height: 1.05;
+  white-space: pre;
+  user-select: none;
+  pointer-events: none;
+  animation: asciiFlameFlicker 1.4s infinite alternate ease-in-out;
+  z-index: 10;
+}
+
+.demonic-card .ascii-corner.top-left {
+  top: -1.6rem;
+  left: -1.6rem;
+  text-align: left;
+}
+
+.demonic-card .ascii-corner.top-right {
+  top: -1.6rem;
+  right: -1.6rem;
+  text-align: right;
+}
+
+.demonic-card .ascii-corner.bottom-left {
+  bottom: -1.6rem;
+  left: -1.6rem;
+  text-align: left;
+}
+
+.demonic-card .ascii-corner.bottom-right {
+  bottom: -1.6rem;
+  right: -1.6rem;
+  text-align: right;
+}
+
+/* Horizontal Top & Bottom ASCII Flame Borders */
+.ascii-flame-border {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  animation: asciiFlameFlicker 1.8s infinite alternate ease-in-out;
+  z-index: 5;
+}
+
+.ascii-flame-border.top {
+  top: -1.2rem;
+}
+
+.ascii-flame-border.bottom {
+  bottom: -1.2rem;
+}
+
+/* Single Phrase / Message */
+.demonic-phrase {
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--theme-glow);
+  margin-bottom: 2rem;
+  animation: textSulfurGlow 2.5s infinite ease-in-out;
+}
+
+
+.demonic-ascii {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.15;
+  color: var(--theme-primary);
+  text-shadow: 0 0 6px color-mix(in srgb, var(--theme-glow) 70%, transparent);
+  white-space: pre;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+}
+
+/* ==========================================
+   Hero ASCII Flame Banner (Braille Density)
+   ========================================== */
+
+/* Hero ASCII Flame Banner */
+.demonic-ascii-flame-banner {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(3px, 0.62vw, 9.5px);
+  line-height: 0.92;
+  white-space: pre;
+  color: var(--theme-primary);
+  text-shadow: 0 0 8px var(--theme-glow), 0 0 16px var(--theme-primary);
+  user-select: none;
+  pointer-events: none;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  overflow: hidden; /* Prevents scrollbars from appearing */
+  display: block;
+  text-align: center;
+  animation: asciiFlameFlicker 1.6s infinite alternate ease-in-out;
+
+  /* Hides scrollbars across all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.demonic-ascii-flame-banner::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+
+/* ==========================================
+   Demonic Phrase & Interactive Copy Button
+   ========================================== */
+
+.demonic-phrase-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.demonic-phrase-wrapper .demonic-phrase {
+  margin-bottom: 0; /* Margin handled by parent wrapper */
+}
+
+.demonic-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--theme-primary, #ff3c00);
+  background: rgba(10, 2, 2, 0.85);
+  border: 1px solid var(--theme-primary, #ff3c00);
+  border-radius: 3px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  user-select: none;
+}
+
+.demonic-copy-btn:hover {
+  background: var(--theme-primary, #ff3c00);
+  color: #050101;
+  box-shadow: 0 0 12px var(--theme-primary, #ff3c00);
+  transform: translateY(-1px);
+}
+
+.demonic-copy-btn:active {
+  transform: scale(0.95);
+}
+
+.demonic-copy-btn.copied {
+  border-color: var(--theme-glow, #ff0000);
+  background: var(--theme-glow, #ff0000);
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--theme-glow, #ff0000);
+  animation: textSulfurGlow 1.5s infinite ease-in-out;
+}
+
+.demonic-copy-btn .copy-icon {
+  font-size: 0.85rem;
+}

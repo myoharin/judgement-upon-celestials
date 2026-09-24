@@ -10,9 +10,9 @@ const letters_to_convert_to_quote = 55;
 // Sample Sins & Virtues list (Replace or expand this array later)
 const SINS_AND_VIRTUES = [
   // Deadly Sins
-  'pride', 'greed', 'lust', 'envy', 'gluttony', 'wrath', 'sloth', 'ignorance', 'love',
+  'pride', 'greed', 'lust', 'envy', 'gluttony', 'wrath', 'sloth', 'ignorance', 'love', "dominance",
   // Cardinal Virtues
-  'chastity', 'temperance', 'charity', 'diligence', 'patience', 'gratitude', 'humility', 'apathy','curiosity'
+  'chastity', 'temperance', 'charity', 'diligence', 'patience', 'gratitude', 'humility', 'apathy','curiosity','submission'
 ];
 
 // Helper: Safely parses env vars to numbers with a default fallback of 20
@@ -34,7 +34,7 @@ const caesarCipher = (str, shift = 0) => {
 const CELESTIALS_CONFIG = [
   { id: 'mercury', displayName: 'Mercury', maxLetters: parseMaxLetters(env.VITE_MERCURY_QUOTE_LENGTH), isBlurred: "" },
   { id: 'venus', displayName: 'Venus', maxLetters: parseMaxLetters(env.VITE_VENUS_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'terra', displayName: 'Terra', maxLetters: parseMaxLetters(env.VITE_EARTH_QUOTE_LENGTH), isBlurred: "" },
+  { id: 'terra', displayName: 'Terra', maxLetters: parseMaxLetters(env.VITE_TERRA_QUOTE_LENGTH), isBlurred: "" },
   { id: 'luna', displayName: 'Luna', maxLetters: parseMaxLetters(env.VITE_LUNA_QUOTE_LENGTH), isBlurred: "Virtues and sins alike hold reverence in time."},
   { id: 'mars', displayName: 'Mars', maxLetters: parseMaxLetters(env.VITE_MARS_QUOTE_LENGTH), isBlurred: "" },
   { id: 'jupiter', displayName: 'Jupiter', maxLetters: parseMaxLetters(env.VITE_JUPITER_QUOTE_LENGTH), isBlurred: "" },
@@ -86,18 +86,20 @@ export default function Root() {
     let isMounted = true;
 
     const runDecrypt = async () => {
-      if (!combinedSubmission || !env.VITE_ENCRYPTED_REWARD_SINS) {
-        if (isMounted) setDecryptedAnswer(await decrypt(env.VITE_ENCRYPTED_REWARD_SINS, "SampleFallback"));
+
+      const key = determineKey(answers['neptune']);
+      if (!combinedSubmission || !key) {
+        if (isMounted) setDecryptedAnswer(await decrypt(key, "SampleFallback"));
         return;
       }
 
       try {
         if (combinedSubmission.length < letters_to_convert_to_quote) {
-          const result = await decrypt(env.VITE_ENCRYPTED_REWARD_SINS, combinedSubmission);
+          const result = await decrypt(key, combinedSubmission);
           if (isMounted) setDecryptedAnswer(result);
         }
         else {
-          const result = await decrypt(env.VITE_ENCRYPTED_REWARD_QUOTES, combinedSubmission);
+          const result = await decrypt(key, combinedSubmission);
           if (isMounted) setDecryptedAnswer(result);
         }
       } catch (err) {
@@ -124,6 +126,16 @@ export default function Root() {
     const noNewlines = value.replace(/[\r\n]/g, '');
     if (countLetters(noNewlines) <= maxLetters) {
       setAnswers((prev) => ({ ...prev, [id]: noNewlines }));
+    }
+  };
+
+  const determineKey = (neptuneAnswer) => {
+    if (neptuneAnswer.toLowerCase() === "love") {
+      return env.VITE_ENCRYPTED_REWARD_SINS;
+    } else if (neptuneAnswer.toLowerCase() === "apathy") {
+      return env.VITE_ENCRYPTED_REWARD_VIRTUES;
+    } else {
+      return env.VITE_ENCRYPTED_REWARD_QUOTES;
     }
   };
 

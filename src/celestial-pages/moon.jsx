@@ -166,7 +166,7 @@ export default function luna() {
             maxLength={9}
             value={password}
             onChange={handlePasswordChange}
-            placeholder="______"
+            placeholder="_________"
             className={`luna-password-input ${isAsmosMatch ? 'pulse-once' : ''}`}
           />
         </div>

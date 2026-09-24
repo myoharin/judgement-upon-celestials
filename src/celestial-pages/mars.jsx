@@ -194,7 +194,7 @@ export default function Mars() {
             maxLength={7}
             value={password}
             onChange={handlePasswordChange}
-            placeholder="______"
+            placeholder="_______"
             className={`mars-password-input ${isLuciferMatch ? 'pulse-once' : ''}`}
           />
         </div>

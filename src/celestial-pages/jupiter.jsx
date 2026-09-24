@@ -3,14 +3,14 @@ import '../.components/crossword.css';
 import '../.components/mystic.css'; 
 import '../.components/celestial.css';
 import { decrypt } from '../.components/encrypt';
-import jupitarCrossword from '../../assets/jupitar_crossword.png';
+import jupiterCrossword from '../../assets/jupiter_crossword.png';
 
 
 const env = import.meta.env;
 
 // --- 1. BACKGROUND IMAGE MICRO-ADJUSTMENTS ---
 const IMAGE_CONFIG = {
-  url: jupitarCrossword,
+  url: jupiterCrossword,
   offsetX: 7,              // Move left/right (px)
   offsetY: 17 ,             // Move up/down (px)
   scale: 0.995,              // Zoom image in/out
@@ -68,7 +68,7 @@ const buildGridMap = () => {
 
 const GRID_MAP = buildGridMap();
 
-export default function Jupitar() {
+export default function Jupiter() {
   const [gridValues, setGridValues] = useState({});
   const [lockedWords, setLockedWords] = useState(new Set());
   const [decryptedResult, setDecryptedResult] = useState('');
@@ -146,13 +146,13 @@ export default function Jupitar() {
     let isMounted = true;
 
     const runDecrypt = async () => {
-      if (!combinedSubmission || !env.VITE_CROSSWORD_REWARD) {
+      if (!combinedSubmission || !env.VITE_JUPITER_QUOTE) {
         if (isMounted) setDecryptedResult('');
         return;
       }
 
       try {
-        const result = await decrypt(env.VITE_CROSSWORD_REWARD, combinedSubmission);
+        const result = await decrypt(env.VITE_JUPITER_QUOTE, combinedSubmission);
         if (isMounted) setDecryptedResult(result);
       } catch (err) {
         if (isMounted) setDecryptedResult('DecryptError');
