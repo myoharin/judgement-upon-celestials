@@ -44,7 +44,6 @@ const WORDS_CONFIG = [
   { id: '15D', answer: 'GLUTTONY', startRow: 17, startCol: 17, direction: 'down', isVirtuous: false },
   { id: '16A', answer: 'SUBMISSION', startRow: 19, startCol: 16, direction: 'across', isVirtuous: true },
   { id: '17A', answer: 'DOMINANCE', startRow: 26, startCol: 5, direction: 'across', isVirtuous: false },
-  
 ];
 
 const buildGridMap = () => {
@@ -69,8 +68,32 @@ const buildGridMap = () => {
 const GRID_MAP = buildGridMap();
 
 export default function Jupiter() {
-  const [gridValues, setGridValues] = useState({});
-  const [lockedWords, setLockedWords] = useState(new Set());
+  // Load initial grid values from LocalStorage or default to empty object
+  const [gridValues, setGridValues] = useState(() => {
+    const saved = localStorage.getItem('jupiter_grid_values');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse saved Jupiter grid values:', e);
+      }
+    }
+    return {};
+  });
+
+  // Load locked words from LocalStorage or default to empty Set
+  const [lockedWords, setLockedWords] = useState(() => {
+    const saved = localStorage.getItem('jupiter_locked_words');
+    if (saved) {
+      try {
+        return new Set(JSON.parse(saved));
+      } catch (e) {
+        console.error('Failed to parse saved Jupiter locked words:', e);
+      }
+    }
+    return new Set();
+  });
+
   const [decryptedResult, setDecryptedResult] = useState('');
   const [scale, setScale] = useState(1);
   
@@ -80,6 +103,16 @@ export default function Jupiter() {
 
   const stageWidth = GRID_COLS * CELL_WIDTH_PX;
   const stageHeight = GRID_ROWS * CELL_HEIGHT_PX;
+
+  // Persist grid values to LocalStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('jupiter_grid_values', JSON.stringify(gridValues));
+  }, [gridValues]);
+
+  // Persist locked words to LocalStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('jupiter_locked_words', JSON.stringify(Array.from(lockedWords)));
+  }, [lockedWords]);
 
   // Dynamically scale canvas down on mobile screens to fit 100% width
   useLayoutEffect(() => {
@@ -182,14 +215,14 @@ export default function Jupiter() {
 
     let nextKey = null;
 
-    if (isDownEmpty) {
-      nextKey = downKey;
-    } else if (isRightEmpty) {
+    if (isRightEmpty) {
       nextKey = rightKey;
-    } else if (isDownActive) {
+    } else if (isDownEmpty) {
       nextKey = downKey;
     } else if (isRightActive) {
       nextKey = rightKey;
+    } else if (isDownActive) {
+      nextKey = downKey;
     }
 
     if (nextKey && inputRefs.current[nextKey]) {
@@ -227,7 +260,6 @@ export default function Jupiter() {
   };
 
   return (
-    
     <div className="celestial-canvas black-bg">
       <div className="mystic-card theme-jupiter">
         <div className="card-letter">Jupiter</div>
@@ -316,7 +348,7 @@ export default function Jupiter() {
 
           {/* Real-Time Decrypted Output Box */}
           <div className="combined-box-section theme-jupiter">
-            <label className="celestial-label combined-label sun">Jupiter's Sin.  </label>
+            <label className="celestial-label combined-label sun">Jupiter's Sin.</label>
             <textarea
               ref={combinedRef}
               readOnly
@@ -332,4 +364,4 @@ export default function Jupiter() {
       </div>
     </div>
   );
-} 
+}

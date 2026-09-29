@@ -89,26 +89,26 @@ const FLAME_CORNER = `
 
 `
 const list = [
-  "Ap_thy",
-  "C_arity",
-  "Chast_ty",
-  "Cur_osi_y",
-  "Dili_ence",
-  "Do_inance",
-  "_nvy",
-  "Gra_it_de",
-  "Gr__d",
-  "Glu_to_y",
-  "Humi_ity",
-  "Ig_orance",
-  "L_ve",
-  "Lu_t",
-  "Pati_nce",
-  "Pri_e",
-  "S_oth",
-  "Submi_sio_",
-  "Te_peran_e",
-  "_rath"
+  "Apathy",
+  "Charity",
+  "Chastity",
+  "Curiosity",
+  "Diligence",
+  "Dominance",
+  "Envy",
+  "Gratitude",
+  "Greed",
+  "Gluttony",
+  "Humility",
+  "Ignorance",
+  "Love",
+  "Lust",
+  "Patience",
+  "Pride",
+  "Sloth",
+  "Submission",
+  "Temperance",
+  "Wrath"
 ]
 
 const scramble_letters = (str, seed) => {

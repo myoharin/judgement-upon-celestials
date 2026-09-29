@@ -17,13 +17,13 @@ const SINS_AND_VIRTUES = [
 
 // Unblurrable Guidance Hints
 const HINTS = [
-  "Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word> to explore this arg's subpages. Forexample, try \"lilith\"!",
+  "Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word> to explore this arg's subpages. Forexample, try \"lilith\" or \"earth\"!",
   "These judgment speaks of sins and virtues. Maybe the deadly ones could be potential solutions...",
   "Could the names of these celestials be potential subpages?",
   "There are 7 devils for each deadly sin. Explore their names!",
   "Who holds the remaining 3 sins? Maybe the first human holds one …",
   "Funfact, Adam had a wife before Eve!",
-  "Why is God exempt from commiting sins himself?"
+  "Why is God exempt from commiting sins himself? He is afterall IGNORANT to all the pain he's caused."
 ];
 
 // Helper: Safely parses env vars to numbers with a default fallback of 20

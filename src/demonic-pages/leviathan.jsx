@@ -83,6 +83,7 @@ export default function Levithan() {
 
         {/* Minimal Single Phrase */}
         <DemonicPhrase phrase={import.meta.env.VITE_LEVIATHAN_KEY} />
+        <p>^Key to a certain drive link.^</p>
 
 
         {/* Hero Braille Flame Header Banner */}

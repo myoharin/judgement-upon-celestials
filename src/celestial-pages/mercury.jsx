@@ -92,7 +92,7 @@ export default function Mercury() {
         </p>
 
         <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center' }}>
-          I suspect that it was swallowed by that gate to hell.
+          I suspect that it was swallowed by that demonic whale that happens to be the gate to hell.
         </p>
 
         <pre

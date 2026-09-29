@@ -165,7 +165,7 @@
   white-space: pre;
   user-select: none;
   pointer-events: none;
-  animation: asciiFlameFlicker 1.4s infinite alternate ease-in-out;
+  animation: asciiFlameFlicker 9.4s infinite alternate ease-in-out;
   z-index: 10;
 }
 
@@ -204,7 +204,7 @@
   overflow: hidden;
   user-select: none;
   pointer-events: none;
-  animation: asciiFlameFlicker 1.8s infinite alternate ease-in-out;
+  animation: asciiFlameFlicker 5.8s infinite alternate ease-in-out;
   z-index: 5;
 }
 
@@ -225,7 +225,7 @@
   text-transform: uppercase;
   color: var(--theme-glow);
   margin-bottom: 2rem;
-  animation: textSulfurGlow 2.5s infinite ease-in-out;
+  animation: textSulfurGlow 8.5s infinite ease-in-out;
 }
 
 
@@ -260,7 +260,7 @@
   overflow: hidden; /* Prevents scrollbars from appearing */
   display: block;
   text-align: center;
-  animation: asciiFlameFlicker 1.6s infinite alternate ease-in-out;
+  animation: asciiFlameFlicker 8.6s infinite alternate ease-in-out;
 
   /* Hides scrollbars across all browsers */
   scrollbar-width: none; /* Firefox */
@@ -304,7 +304,7 @@
   border-radius: 3px;
   padding: 0.35rem 0.75rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 2.5s ease-in-out;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
   user-select: none;
 }
@@ -325,9 +325,16 @@
   background: var(--theme-glow, #ff0000);
   color: #ffffff;
   box-shadow: 0 0 16px var(--theme-glow, #ff0000);
-  animation: textSulfurGlow 1.5s infinite ease-in-out;
+  animation: textSulfurGlow 7.5s infinite ease-in-out;
 }
 
 .demonic-copy-btn .copy-icon {
   font-size: 0.85rem;
+}
+
+p {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--theme-primary, #ff3c00);
+  text-align: center;
 }

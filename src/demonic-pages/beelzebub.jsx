@@ -83,6 +83,7 @@ export default function Beelzebub() {
 
         {/* Minimal Single Phrase */}
         <DemonicPhrase phrase="APPETITE" />
+        <p>^Key to a certain vigenere cipher.^</p>
 
 
         {/* Hero Braille Flame Header Banner */}

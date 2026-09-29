@@ -83,6 +83,7 @@ export default function Satan() {
 
         {/* Minimal Single Phrase */}
         <DemonicPhrase phrase={import.meta.env.VITE_SATAN_KEY} />
+        <p>^Key to a certain youtube link.^</p>
 
 
         {/* Hero Braille Flame Header Banner */}

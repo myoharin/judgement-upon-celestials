@@ -83,6 +83,7 @@ export default function Belphegor() {
 
         {/* Minimal Single Phrase */}
         <DemonicPhrase phrase={import.meta.env.VITE_BELPHEGOR_KEY} />
+        <p>^Key to a certain instagram link.^</p>
 
 
         {/* Hero Braille Flame Header Banner */}

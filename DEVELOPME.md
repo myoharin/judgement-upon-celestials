@@ -1,16 +1,15 @@
 Todo:
 - [ ] put any sin, virtue, celestial, planet name in bold
-- [ ] on mercury’s page, put ‘gate to hell’ in bold
-- [ ] ⁠reduce the flashing on the demon pages 😭 especially on the text bc its hard to read
+- [x] on mercury’s page, put ‘gate to hell’ in bold (added that glorifed dolphin that is the)
+- [x] ⁠reduce the flashing on the demon pages 😭 especially on the text bc its hard to read
 - [ ] ⁠on terra’s page, put all the hex letters in order instead of x3, x1, x1 of each letter. and make this text bold and white to match the answer box as well
 - [ ] ⁠on mars page, make the morse code bold and white too
-- [ ] i think we should just have luna and pluto on the first page orr we make this one of the optional hints
-- [ ] on adam’s page, make the text larger and just remove missing letters, the anagrams should be enough
-- [ ] ⁠also im not sure if i used a wrong decoder but i couldnt decode the text on the saturn page even with the key
-- [ ] ⁠oh also for each key that they find (youtube key, google drive, instagram etc) label them so they know which one they found
+- [x] i think we should just have luna and pluto on the first page orr we make this one of the optional hints
+- [x] on adam’s page, make the text larger and just remove missing letters, the anagrams should be enough
+- [x] ⁠also im not sure if i used a wrong decoder but i couldnt decode the text on the saturn page even with the key
 - [ ] after you add the google drive/instagram/youtube keys ill go through it again bc i couldnt reasonably reach some of the subpages by myself
 - [ ] i think for mammon, i know the quote kind of implies it but ‘greed’ should explicitly be somewhere. same for uranus + sloth i couldnt find anything for that
-- [ ] and i think make the neptune page link to lilith a tinyyy bit more obvious by replacing ‘vows’ with ‘your vow’
+- [x] and i think make the neptune page link to lilith a tinyyy bit more obvious by replacing ‘vows’ with ‘your vow’
 - [ ] and on the main page, i couldnt enter the entire secret quote for uranus, the character limit was too small
 - [x] oh also not sure if it’s different on the official/private, but i think theres a typo with asmodeus
 - [x] add all the optional hints to rooit.
@@ -18,8 +17,12 @@ Todo:
 - [ ] make the submission google form
 - [x] Change time
 - [x] local storgae for root
-- [ ] local storage for jupiter
+- [x] local storage for jupiter
 - [ ] input box needs to flash a bit if the quote is correct.
+- [x] lable youttube key
+- [x] lable drive key
+- [x] lable instagram key
+- [x] lable vigenrer cipher key
 
 
 1. Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word. Forexample, try Lilith!>

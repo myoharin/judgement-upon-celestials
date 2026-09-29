@@ -122,11 +122,11 @@ export default function Saturn() {
         <div className="card-corner-letter bottom-right">A</div>
 
         <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center' }}>
-          Wiiw xbux I vepamsm, lsmt hmga fekt jw acfen. <br />
-          Twpx vwgxeci chc aed lwig ghy tphxxl fc fxgwm amiw, iwig ur werdrw, bain bn xawnwacsxa; <br />
-          baet vtrmtx wndgi mptx wpgtxl fc sxckem fsmtcx bvms ac txxzgmtn; <br />
-          iltb zpet px hck jighx aikzehi, chck jighx mzthe; <br />
-          xi'w rwnv fpjpm ur lepgx lbtvvth.<br />
+          Wxil mqfi E zxheqli, afqe dqmw eowi ma umyax. <br />
+          Xbsa wangxut rqi uth jacb svu wwzxrb as yijlx vfcb, bywg er wavvrq, ffwr om gkhbwnzbmo; <br />
+          hbst thgael sguvr msel joitxk mr oievph ymemaz trfc mr rmmegwtl; <br />
+          xaek ttxc ta onx qmvsm vuiamjl, rvui amjlr hlrim; <br />
+          zl'l rfuu jindr as yjale lfyyzej.<br />
         </p>
 
         <pre
