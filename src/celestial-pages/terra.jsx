@@ -166,11 +166,9 @@ export default function Terra() {
           </tbody>
         </table>
 
-        <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center' }}>
-          0x4D x 3 <br />
-          0x41 x 1 <br />
-          0x4E x 1 <br />
-          0x4O x 1 <br />
+        <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center', fontWeight: 'bold', color: '#ffffff', fontSize: '1rem', textShadow: '0 0 12px rgb(251, 251, 251)', color: '#ffffff' }}>
+          0x4D 0x41 0x4D<br />
+          0x4D 0x4F 0x4E<br />
         </p>
 
         <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center' }}>
@@ -179,7 +177,7 @@ export default function Terra() {
 
         {/* 6-Letter Password Input Box */}
         <div className="terra-password-container">
-          <label className="celestial-label" style={{ marginBottom: '0.5rem', minWidth: '10rem'}}>
+          <label className="celestial-label" style={{ marginBottom: '0.5rem', minWidth: '10rem', fontFamily: 'var(--font-mono)'}}>
             The litte crow's beloved.
           </label>
           <input

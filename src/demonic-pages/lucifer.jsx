@@ -86,6 +86,7 @@ export default function Lucifer() {
           copy={false} 
           phrase="What goes on four legs in the _______, on two legs at noon, and on three legs in the evening?" 
           />
+        <p>^Key to a certain alternative name.^</p>
 
 
         {/* Hero Braille Flame Header Banner */}

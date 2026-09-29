@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../index.css';
 import '../.components/celestial.css';
-import { decrypt } from '../.components/encrypt';
+import { encrypt, decrypt } from '../.components/encrypt';
 
 const env = import.meta.env;
 
@@ -20,8 +20,11 @@ const HINTS = [
   "Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word> to explore this arg's subpages. Forexample, try \"lilith\" or \"earth\"!",
   "These judgment speaks of sins and virtues. Maybe the deadly ones could be potential solutions...",
   "Could the names of these celestials be potential subpages?",
+  "There are three puzzles here, one to determine each sins the celetsials hold, another to determine each virtue they possess.",
   "There are 7 devils for each deadly sin. Explore their names!",
+  "The two blurred celestials, what do you think they could be? Certainly not planets, could be what was once one, or one that turns the tides.",
   "Who holds the remaining 3 sins? Maybe the first human holds one …",
+  "The third puzzle, is to determine the message left each of them for keepsake, if you haven't determine each of their character length already.",
   "Funfact, Adam had a wife before Eve!",
   "Why is God exempt from commiting sins himself? He is afterall IGNORANT to all the pain he's caused."
 ];
@@ -43,16 +46,16 @@ const caesarCipher = (str, shift = 0) => {
 };
 
 const CELESTIALS_CONFIG = [
-  { id: 'mercury', displayName: 'Mercury', maxLetters: parseMaxLetters(env.VITE_MERCURY_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'venus', displayName: 'Venus', maxLetters: parseMaxLetters(env.VITE_VENUS_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'terra', displayName: 'Terra', maxLetters: parseMaxLetters(env.VITE_TERRA_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'luna', displayName: 'Luna', maxLetters: parseMaxLetters(env.VITE_LUNA_QUOTE_LENGTH), isBlurred: "Virtues and sins alike hold reverence in time."},
-  { id: 'mars', displayName: 'Mars', maxLetters: parseMaxLetters(env.VITE_MARS_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'jupiter', displayName: 'Jupiter', maxLetters: parseMaxLetters(env.VITE_JUPITER_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'saturn', displayName: 'Saturn', maxLetters: parseMaxLetters(env.VITE_SATURN_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'uranus', displayName: 'Uranus', maxLetters: parseMaxLetters(env.VITE_URANUS_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'neptune', displayName: 'Neptune', maxLetters: parseMaxLetters(env.VITE_NEPTUNE_QUOTE_LENGTH), isBlurred: "" },
-  { id: 'pluto', displayName: 'Pluto', maxLetters: parseMaxLetters(env.VITE_PLUTO_QUOTE_LENGTH), isBlurred: "Beyond mere judgements, lies a chronical." },
+  { id: 'mercury', displayName: 'Mercury', maxLetters: parseMaxLetters(env.VITE_MERCURY_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_MERCURY_QUOTE_CHECK },
+  { id: 'venus', displayName: 'Venus', maxLetters: parseMaxLetters(env.VITE_VENUS_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_VENUS_QUOTE_CHECK },
+  { id: 'terra', displayName: 'Terra', maxLetters: parseMaxLetters(env.VITE_TERRA_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_TERRA_QUOTE_CHECK },
+  { id: 'luna', displayName: 'Luna', maxLetters: parseMaxLetters(env.VITE_LUNA_QUOTE_LENGTH), isBlurred: "Virtues and sins alike hold reverence in time.", quoteCheck: env.VITE_LUNA_QUOTE_CHECK },
+  { id: 'mars', displayName: 'Mars', maxLetters: parseMaxLetters(env.VITE_MARS_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_MARS_QUOTE_CHECK },
+  { id: 'jupiter', displayName: 'Jupiter', maxLetters: parseMaxLetters(env.VITE_JUPITER_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_JUPITER_QUOTE_CHECK },
+  { id: 'saturn', displayName: 'Saturn', maxLetters: parseMaxLetters(env.VITE_SATURN_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_SATURN_QUOTE_CHECK },
+  { id: 'uranus', displayName: 'Uranus', maxLetters: parseMaxLetters(env.VITE_URANUS_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_URANUS_QUOTE_CHECK },
+  { id: 'neptune', displayName: 'Neptune', maxLetters: parseMaxLetters(env.VITE_NEPTUNE_QUOTE_LENGTH), isBlurred: "", quoteCheck: env.VITE_NEPTUNE_QUOTE_CHECK },
+  { id: 'pluto', displayName: 'Pluto', maxLetters: parseMaxLetters(env.VITE_PLUTO_QUOTE_LENGTH), isBlurred: "Beyond mere judgements, lies a chronical.", quoteCheck: env.VITE_PLUTO_QUOTE_CHECK },
 ];
 
 const WARNING_THRESHOLD = 12;
@@ -177,6 +180,7 @@ export default function Root() {
   });
 
   const [decryptedAnswer, setDecryptedAnswer] = useState('');
+  const [quoteMatches, setQuoteMatches] = useState({});
   const combinedRef = useRef(null);
 
   // Sync answers to LocalStorage whenever they change
@@ -233,6 +237,29 @@ export default function Root() {
     };
   }, [combinedSubmission, answers]);
 
+  // Encrypt VITE_CHECK_KEY using each input as the key, and compare against that celestial's quoteCheck
+  useEffect(() => {
+    let isMounted = true;
+
+    const checkQuotes = async () => {
+      const entries = await Promise.all(
+        CELESTIALS_CONFIG.map(async (celestial) => {
+          const val = answers[celestial.id];
+          if (!val || !celestial.quoteCheck) return [celestial.id, false];
+          const result = await encrypt(env.VITE_CHECK_PLAINTEXT, val);
+          return [celestial.id, result === celestial.quoteCheck];
+        })
+      );
+      if (isMounted) setQuoteMatches(Object.fromEntries(entries));
+    };
+
+    checkQuotes();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [answers]);
+
   // Auto-expand combined textarea whenever decryptedAnswer updates
   useEffect(() => {
     if (combinedRef.current) {
@@ -288,8 +315,8 @@ export default function Root() {
               const showCounter = letterCount > WARNING_THRESHOLD;
               const isAtLimit = letterCount === celestial.maxLetters;
 
-              // Check if input matches any sin or virtue exactly (case-insensitive)
-              const isExactMatch = SINS_AND_VIRTUES.includes(val.trim().toLowerCase());
+              // Check if input matches any sin or virtue exactly (case-insensitive), or its encrypted quoteCheck
+              const isExactMatch = SINS_AND_VIRTUES.includes(val.trim().toLowerCase()) || Boolean(quoteMatches[celestial.id]);
 
               return (
                 <div key={celestial.id} className="celestial-box">

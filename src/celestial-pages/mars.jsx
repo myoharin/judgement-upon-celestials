@@ -166,7 +166,7 @@ export default function Mars() {
           </tbody>
         </table>
 
-        <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center', fontSize: '2rem' }}>
+        <p style={{ lineHeight: '1.5', marginBottom: '1rem', textAlign: 'center', fontSize: '2rem' ,  fontWeight: 'bold', textShadow: '0 0 12px rgb(251, 251, 251)', color: '#ffffff' }}>
           <b>
            ◦ – ◦ ◦ <br />
           ◦ ◦ – <br />

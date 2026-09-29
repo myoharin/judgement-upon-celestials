@@ -253,6 +253,7 @@ export default function Mammon({
 
         {/* Dynamic Caesar Ciphered Demonic Phrase with Copy Button */}
         <DemonicPhrase phrase={decryptedPhrase} />
+        <p>^Key to a certain crow's beloved.^</p>
 
         {/* Customizable N-Notch Rotary Vault Lock Wheel */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '1rem 0 2rem 0' }}>
