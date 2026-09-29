@@ -22,7 +22,7 @@ import Pluto from './celestial-pages/pluto'
 import Leviathan from './demonic-pages/leviathan'
 import Satan from './demonic-pages/satan'
 import Mammon from './demonic-pages/mammon'
-import Asmosdeus from './demonic-pages/asmosdeus'
+import Asmodeus from './demonic-pages/asmodeus'
 import Lucifer from './demonic-pages/lucifer'
 import Adam from './demonic-pages/adam'
 import Beelzebub from './demonic-pages/beelzebub'
@@ -80,7 +80,7 @@ else {
           <Route path="/leviathan" element={<Leviathan />} />
           <Route path="/satan" element={<Satan />} />
           <Route path="/mammon" element={<Mammon />} />
-          <Route path="/asmosdeus" element={<Asmosdeus />} />
+          <Route path="/asmodeus" element={<Asmodeus />} />
           <Route path="/lucifer" element={<Lucifer />} />
           <Route path="/adam" element={<Adam />} />
           <Route path="/beelzebub" element={<Beelzebub />} />

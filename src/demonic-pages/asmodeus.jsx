@@ -41,7 +41,7 @@ const FLAME_CORNER = `
 `
 
 
-export default function Asmosdeus() {
+export default function Asmodeus() {
   return (
     <div className="demonic-canvas">
       <div className={`demonic-card theme-lust`}>

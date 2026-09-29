@@ -3,15 +3,15 @@ import '../index.css';
 import '../.components/celestial.css';
 import '../.components/mystic.css';
 
-// Target Date: Thursday, October 1st at 12:00 AM
+// Target Date: Thursday, October 1st at 12:00 PM
 const getTargetDate = () => {
   const now = new Date();
   let year = now.getFullYear();
-  let target = new Date(year, 9, 1, 0, 0, 0); // Month 9 = October (0-indexed)
+  let target = new Date(year, 9, 1, 12, 0, 0); // Month 9 = October (0-indexed)
 
   // If Oct 1st has already passed this year, set to next year
   if (now > target) {
-    target = new Date(year + 1, 9, 1, 0, 0, 0);
+    target = new Date(year + 1, 9, 1, 12, 0, 0);
   }
   return target;
 };
@@ -173,7 +173,7 @@ export default function Clock() {
               value={
                 timeLeft.isFinished
                   ? "THE ARG HAS BEGUN. FIRST 10 PARTICIPANTS GET BRAGGING RIGHTS"
-                  : `OCTOBER 1ST, 00:00 AM — Unicode Offical Launch`
+                  : `OCTOBER 1ST, 12:00 PM — Unicode Offical Launch`
               }
               className="combined-textarea clock-status-text"
             />

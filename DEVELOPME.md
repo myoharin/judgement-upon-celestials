@@ -1,32 +1,34 @@
 Todo:
-- [x] root
+- [ ] put any sin, virtue, celestial, planet name in bold
+- [ ] on mercury’s page, put ‘gate to hell’ in bold
+- [ ] ⁠reduce the flashing on the demon pages 😭 especially on the text bc its hard to read
+- [ ] ⁠on terra’s page, put all the hex letters in order instead of x3, x1, x1 of each letter. and make this text bold and white to match the answer box as well
+- [ ] ⁠on mars page, make the morse code bold and white too
+- [ ] i think we should just have luna and pluto on the first page orr we make this one of the optional hints
+- [ ] on adam’s page, make the text larger and just remove missing letters, the anagrams should be enough
+- [ ] ⁠also im not sure if i used a wrong decoder but i couldnt decode the text on the saturn page even with the key
+- [ ] ⁠oh also for each key that they find (youtube key, google drive, instagram etc) label them so they know which one they found
+- [ ] after you add the google drive/instagram/youtube keys ill go through it again bc i couldnt reasonably reach some of the subpages by myself
+- [ ] i think for mammon, i know the quote kind of implies it but ‘greed’ should explicitly be somewhere. same for uranus + sloth i couldnt find anything for that
+- [ ] and i think make the neptune page link to lilith a tinyyy bit more obvious by replacing ‘vows’ with ‘your vow’
+- [ ] and on the main page, i couldnt enter the entire secret quote for uranus, the character limit was too small
+- [x] oh also not sure if it’s different on the official/private, but i think theres a typo with asmodeus
+- [x] add all the optional hints to rooit.
+- [ ] finalize rewards key(using encrypted completion timestamp to track duplicacy)
+- [ ] make the submission google form
+- [x] Change time
+- [x] local storgae for root
+- [ ] local storage for jupiter
+- [ ] input box needs to flash a bit if the quote is correct.
 
-- [x] moon
-- [x] earth
 
-- [x] luna(r)
-- [x] mercury
-- [x] venus
-- [x] terra
-- [x] mars
-- [x] jupitar
-- [x] saturn
-- [x] uranus
-- [x] neptune
-- [x] pluto
-
-- [x] leviathan
-- [x] satan
-- [x] mammon
-- [x] asmodeus
-- [x] lucifer
-- [x] beelzebub
-- [x] adam
-- [x] belphegor
-- [x] lilith
-- [x] god
-
-ideas
+1. Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word. Forexample, try Lilith!>
+2. These judgment speaks of sins and virtues. Maybe the deadly ones could be potential solutions...
+3. Could the names of these celestials be potential subpages?
+4. There are 7 devils for each deadly sin. Explore their names!
+5. Who holds the remaining 3 sins? Maybe the first human holds one …
+6. Funfact, Adam had a wife before Eve!
+7. Why is God exempt from commiting sins himself?
 
 crossword long key:
 `ATEMPERANCECAGHSLOTHRAHACURIOSITYWRATHHIIATTSYULUSTDOIENVYTGEYLSUBMISSIONDTHUMILITYPATIENCELROIIGNORANCEGREEDYEEDOMINANCECE`

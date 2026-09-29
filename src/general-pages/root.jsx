@@ -7,12 +7,23 @@ const env = import.meta.env;
 
 const letters_to_convert_to_quote = 55;
 
-// Sample Sins & Virtues list (Replace or expand this array later)
+// Sample Sins & Virtues list
 const SINS_AND_VIRTUES = [
   // Deadly Sins
-  'pride', 'greed', 'lust', 'envy', 'gluttony', 'wrath', 'sloth', 'ignorance', 'love', "dominance",
+  'pride', 'greed', 'lust', 'envy', 'gluttony', 'wrath', 'sloth', 'ignorance', 'love', 'dominance',
   // Cardinal Virtues
-  'chastity', 'temperance', 'charity', 'diligence', 'patience', 'gratitude', 'humility', 'apathy','curiosity','submission'
+  'chastity', 'temperance', 'charity', 'diligence', 'patience', 'gratitude', 'humility', 'apathy', 'curiosity', 'submission'
+];
+
+// Unblurrable Guidance Hints
+const HINTS = [
+  "Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word> to explore this arg's subpages. Forexample, try \"lilith\"!",
+  "These judgment speaks of sins and virtues. Maybe the deadly ones could be potential solutions...",
+  "Could the names of these celestials be potential subpages?",
+  "There are 7 devils for each deadly sin. Explore their names!",
+  "Who holds the remaining 3 sins? Maybe the first human holds one …",
+  "Funfact, Adam had a wife before Eve!",
+  "Why is God exempt from commiting sins himself?"
 ];
 
 // Helper: Safely parses env vars to numbers with a default fallback of 20
@@ -46,8 +57,8 @@ const CELESTIALS_CONFIG = [
 
 const WARNING_THRESHOLD = 12;
 
-// Embedded Keyframe Style for single pulse effect
-const PULSE_ANIMATION_STYLES = `
+// Embedded Keyframe & Component Styles
+const PAGE_STYLES = `
   @keyframes pulseOnceAnimation {
     0% {
       transform: scale(1);
@@ -66,14 +77,117 @@ const PULSE_ANIMATION_STYLES = `
   .pulse-once {
     animation: pulseOnceAnimation 0.5s ease-in-out 1;
   }
+
+  /* Hint Boxes Styles */
+  .hints-section {
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+
+  .hints-header-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: var(--mystic-border, #00f3ff);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+  }
+
+  .hints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hint-box {
+    background: rgba(11, 15, 25, 0.85);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .hint-box:hover {
+    border-color: var(--mystic-border, #00f3ff);
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .hint-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--mystic-border, #00f3ff);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.4rem;
+  }
+
+  .hint-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #e0e7ff;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+    word-break: break-word;
+  }
+
+  .hint-text.blurred {
+    filter: blur(6px);
+    opacity: 0.4;
+  }
+
+  .hint-text.revealed {
+    filter: blur(0);
+    opacity: 1;
+  }
 `;
 
 export default function Root() {
-  const [answers, setAnswers] = useState(
-    CELESTIALS_CONFIG.reduce((acc, item) => ({ ...acc, [item.id]: '' }), {})
-  );
+  // Load initial answers from LocalStorage or fallback to empty strings
+  const [answers, setAnswers] = useState(() => {
+    const saved = localStorage.getItem('celestials_answers');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse saved answers:', e);
+      }
+    }
+    return CELESTIALS_CONFIG.reduce((acc, item) => ({ ...acc, [item.id]: '' }), {});
+  });
+
+  // Load revealed hints state from LocalStorage or default all to false
+  const [revealedHints, setRevealedHints] = useState(() => {
+    const saved = localStorage.getItem('celestials_hints');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse saved hints:', e);
+      }
+    }
+    return {};
+  });
+
   const [decryptedAnswer, setDecryptedAnswer] = useState('');
   const combinedRef = useRef(null);
+
+  // Sync answers to LocalStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('celestials_answers', JSON.stringify(answers));
+  }, [answers]);
+
+  // Sync revealed hints to LocalStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('celestials_hints', JSON.stringify(revealedHints));
+  }, [revealedHints]);
 
   // Concatenate all answers synchronously to use as decryption key and shift counter
   const combinedSubmission = CELESTIALS_CONFIG.map((item) => answers[item.id] || '').join('');
@@ -81,12 +195,23 @@ export default function Root() {
   // Shift advances dynamically by 1 for every letter added to the combined submission
   const currentShift = countLetters(combinedSubmission);
 
+  // Determine decryption key based on Neptune input
+  const determineKey = (neptuneAnswer = '') => {
+    const val = neptuneAnswer.toLowerCase();
+    if (val === "love") {
+      return env.VITE_ENCRYPTED_REWARD_SINS;
+    } else if (val === "apathy") {
+      return env.VITE_ENCRYPTED_REWARD_VIRTUES;
+    } else {
+      return env.VITE_ENCRYPTED_REWARD_QUOTES;
+    }
+  };
+
   // Async decryption handling via useEffect
   useEffect(() => {
     let isMounted = true;
 
     const runDecrypt = async () => {
-
       const key = determineKey(answers['neptune']);
       if (!combinedSubmission || !key) {
         if (isMounted) setDecryptedAnswer(await decrypt(key, "SampleFallback"));
@@ -94,14 +219,8 @@ export default function Root() {
       }
 
       try {
-        if (combinedSubmission.length < letters_to_convert_to_quote) {
-          const result = await decrypt(key, combinedSubmission);
-          if (isMounted) setDecryptedAnswer(result);
-        }
-        else {
-          const result = await decrypt(key, combinedSubmission);
-          if (isMounted) setDecryptedAnswer(result);
-        }
+        const result = await decrypt(key, combinedSubmission);
+        if (isMounted) setDecryptedAnswer(result);
       } catch (err) {
         if (isMounted) setDecryptedAnswer('DecryptError');
       }
@@ -112,7 +231,7 @@ export default function Root() {
     return () => {
       isMounted = false;
     };
-  }, [combinedSubmission]);
+  }, [combinedSubmission, answers]);
 
   // Auto-expand combined textarea whenever decryptedAnswer updates
   useEffect(() => {
@@ -129,14 +248,8 @@ export default function Root() {
     }
   };
 
-  const determineKey = (neptuneAnswer) => {
-    if (neptuneAnswer.toLowerCase() === "love") {
-      return env.VITE_ENCRYPTED_REWARD_SINS;
-    } else if (neptuneAnswer.toLowerCase() === "apathy") {
-      return env.VITE_ENCRYPTED_REWARD_VIRTUES;
-    } else {
-      return env.VITE_ENCRYPTED_REWARD_QUOTES;
-    }
+  const toggleHint = (index) => {
+    setRevealedHints((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   const handleAutoResize = (e) => {
@@ -150,8 +263,8 @@ export default function Root() {
 
   return (
     <div className="celestial-canvas">
-      {/* Pulse Keyframe Injection */}
-      <style>{PULSE_ANIMATION_STYLES}</style>
+      {/* Page & Animation Styles */}
+      <style>{PAGE_STYLES}</style>
 
       <div className="celestial-container">
         <div className="mystic-card theme-root">
@@ -163,7 +276,7 @@ export default function Root() {
           {/* Main Chromatic Title */}
           <div className="title-wrapper">
             <h1 className="rgb-split-title" style={{ textAlign: 'center', padding: '1rem' }}>
-              Judgment upon <br /> Celestials
+              Celestials ARG
             </h1>
           </div>
 
@@ -220,7 +333,7 @@ export default function Root() {
 
           {/* Combined Concatenated Output Box */}
           <div className="combined-box-section">
-            <label className="celestial-label combined-label">Will your judgment match the stars?</label>
+            <label className="celestial-label combined-label">What do you know of sins and virtues? What do you know of mine?</label>
             <textarea
               ref={combinedRef}
               readOnly
@@ -230,6 +343,32 @@ export default function Root() {
               className="combined-textarea"
             />
           </div>
+
+          {/* Optional Guidance Hints Section */}
+          <div className="hints-section">
+            <div className="hints-header-title">Optional Hints!</div>
+            <div className="hints-list">
+              {HINTS.map((hintText, index) => {
+                const isRevealed = Boolean(revealedHints[index]);
+                return (
+                  <div
+                    key={index}
+                    className="hint-box"
+                    onClick={() => toggleHint(index)}
+                  >
+                    <div className="hint-box-header">
+                      <span>Hint {index + 1}</span>
+                      <span>{isRevealed ? 'Revealed' : 'Click to Unblur'}</span>
+                    </div>
+                    <div className={`hint-text ${isRevealed ? 'revealed' : 'blurred'}`}>
+                      {hintText}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
