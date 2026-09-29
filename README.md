@@ -25,3 +25,7 @@
 | `belphegor` | [https://myoharin.github.io/judgement-upon-celestials/belphegor](https://myoharin.github.io/judgement-upon-celestials/belphegor) |
 | `lilith` | [https://myoharin.github.io/judgement-upon-celestials/lilith](https://myoharin.github.io/judgement-upon-celestials/lilith) |
 | `god` | [https://myoharin.github.io/judgement-upon-celestials/god](https://myoharin.github.io/judgement-upon-celestials/god) |
+
+
+
+ALSO for playtesters: AMAUROTIC is your key to the moon.
