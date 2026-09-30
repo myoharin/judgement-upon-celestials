@@ -6,12 +6,12 @@ Todo:
 - [x] on adam’s page, make the text larger and just remove missing letters, the anagrams should be enough
 - [x] ⁠also im not sure if i used a wrong decoder but i couldnt decode the text on the saturn page even with the key
 - [x] and i think make the neptune page link to lilith a tinyyy bit more obvious by replacing ‘vows’ with ‘your vow’
-- [ ] and on the main page, i couldnt enter the entire secret quote for uranus, the character limit was too small
+- [x] and on the main page, i couldnt enter the entire secret quote for uranus, the character limit was too small
 - [x] oh also not sure if it’s different on the official/private, but i think theres a typo with asmodeus
 - [x] add all the optional hints to rooit.
-- [ ] after you add the google drive/instagram/youtube keys ill go through it again bc i couldnt reasonably reach some of the subpages by myself
-- [ ] finalize rewards key(using encrypted completion timestamp to track duplicacy)
-- [ ] make the submission google form
+- [x] after you add the google drive/instagram/youtube keys ill go through it again bc i couldnt reasonably reach some of the subpages by myself
+- [x] finalize rewards key(using encrypted completion timestamp to track duplicacy)
+- [x] make the submission google form
 - [ ] put any sin, virtue, celestial, planet name in bold
 - [x] Change time
 - [x] local storgae for root
@@ -22,18 +22,8 @@ Todo:
 - [x] lable instagram key
 - [x] lable vigenrer cipher key
 
-
 - [ ] i think for mammon, i know the quote kind of implies it but ‘greed’ should explicitly be somewhere. same for uranus + sloth i couldnt find anything for that
 - [ ] on mercury’s page, put ‘gate to hell’ in bold (i think bolding it is a bit tacky, so i added "by that demonic whale that is a gate to hell" )
-
-
-1. Maybe you can explore the subpages by exploring https://unicodemagazine.github.io/celestials/<insert word. Forexample, try Lilith!>
-2. These judgment speaks of sins and virtues. Maybe the deadly ones could be potential solutions...
-3. Could the names of these celestials be potential subpages?
-4. There are 7 devils for each deadly sin. Explore their names!
-5. Who holds the remaining 3 sins? Maybe the first human holds one …
-6. Funfact, Adam had a wife before Eve!
-7. Why is God exempt from commiting sins himself?
 
 crossword long key:
 `ATEMPERANCECAGHSLOTHRAHACURIOSITYWRATHHIIATTSYULUSTDOIENVYTGEYLSUBMISSIONDTHUMILITYPATIENCELROIIGNORANCEGREEDYEEDOMINANCECE`

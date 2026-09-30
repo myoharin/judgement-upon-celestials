@@ -301,7 +301,7 @@ export default function Neptune() {
   return (
     <div className="celestial-canvas black-bg">
       <div className="mystic-card theme-neptune">
-        <div className="card-letter" style={{ minWidth: '12rem' }}>Your vows to Me</div>
+        <div className="card-letter" style={{ minWidth: '12rem' }}>Your vow to Me</div>
         <div className="corner top left"></div>
         <div className="corner top right"></div>
         <div className="corner bottom left"></div>

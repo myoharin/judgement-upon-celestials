@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Root from './general-pages/root'
 import Encrypt from './general-pages/encrypt'
 import Clock from './general-pages/clock'
+import Reward from './general-pages/reward'
 
 import Earth from './celestial-pages/earth'
 import Moon from './celestial-pages/moon'
@@ -87,6 +88,8 @@ else {
           <Route path="/belphegor" element={<Belphegor />} />
           <Route path="/lilith" element={<Lilith />} />
           <Route path="/god" element={<God />} />
+
+          <Route path="/reward" element={<Reward />} />
 
           <Route path="/*" element={<Navigate to="/" replace />}/>
         </Routes>
